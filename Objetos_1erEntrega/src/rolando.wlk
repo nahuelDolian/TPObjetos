@@ -52,6 +52,7 @@ object rolando {
 	}
 	method quitarArtefacto(unArtefacto){
 		artefactosDeLucha.remove(unArtefacto)
+		self.valorBase(valorBase-(unArtefacto.aportar() - valorBase))
 	}
 	
     method artefactosDeLucha(){
@@ -61,7 +62,9 @@ object rolando {
     method estaCargado(){
 	return self.artefactosDeLucha().size() >= 5
 	
-	}   
+	}
+    
+    
  
  }
  
