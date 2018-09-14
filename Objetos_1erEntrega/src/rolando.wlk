@@ -38,7 +38,7 @@ object rolando {
      	//  punto 2 //
 	
 	method valorBase(unValor){
-		valorBase= valorBase + unValor
+		valorBase += unValor
 	}
 	
 	method valorBase(){
@@ -64,8 +64,16 @@ object rolando {
 	
 	}
 	
-//	method objetoMasPoderoso(){
-//	return self.artefactosDeLucha().max{unArtefacto => unArtefacto.aportar()}
- //   }  
+
+	method sacarEspejo(){
+			return artefactosDeLucha.filter({artefacto => !artefacto.equals(espejo)})
+	
+	}
+	
+	method objetoMasPoderoso(){
+		return self.sacarEspejo().max{unArtefacto => unArtefacto.aportar()}
+	}
+	
+    }  
  
- }
+ 
