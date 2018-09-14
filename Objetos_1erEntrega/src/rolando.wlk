@@ -1,12 +1,14 @@
 import hechizos.*
 import artefactosDeLucha.*
+import refuerzosArmadura.*
+
 object rolando {
 	
 	var hechizoPreferido
 	var valorFuerzaOscura = 5
 	var artefactosDeLucha = []
 	var valorBase = 1
-	var refuerzoArmadura
+	
 	//punto 1	
 	method valorFuerzaOscura(){
 		return valorFuerzaOscura
@@ -32,38 +34,34 @@ object rolando {
 	method esPoderoso(){
 		return hechizoPreferido.esPoderoso()
 	}
+
+     	//  punto 2 //
 	
-	
-	//´punto 1//
-	method habilidadLucha(){
-		return  (self.armadura() + artefactosDeLucha.fold(self.valorBase(), {inicial, unArtefacto => unArtefacto.aportar() + inicial }))
-	}
-	method valorBase(){ 
-		return valorBase
-	}
-	
-	
-	//punto 2 //
 	method valorBase(unValor){
 		valorBase=unValor
 	}
+	
+	method valorBase(){
+		return valorBase
+	}
+	
 	method agregarArtefacto(unArtefacto){
 		artefactosDeLucha.add(unArtefacto)
+		unArtefacto.dueno(self)
+		self.valorBase(unArtefacto.aportar())
 	}
 	method quitarArtefacto(unArtefacto){
 		artefactosDeLucha.remove(unArtefacto)
 	}
-	method tieneMejorNivelDeLucha(){
-		return self.habilidadLucha() > self.nivelDeHechiceria()
-	}
 	
+    method artefactosDeLucha(){
+	    return artefactosDeLucha
+    }   
+    
+    method estaCargado(){
+	return self.artefactosDeLucha().size() >= 5
 	
-	//punto 3 //
-	method refuerzoArmadura(){
-		return refuerzoArmadura.aportar()
-	}
-	method refuerzoArmadura(unRefuerzo){
-		refuerzoArmadura=unRefuerzo
-	}	
-	
-}
+	}   
+ 
+ }
+ 
