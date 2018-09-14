@@ -11,7 +11,7 @@ object espadaDelDestino {
 		}
 	
 	method aportar(){
-		return (dueno.valorBase() + 3)
+		return 3
 	}
 }
 
@@ -24,7 +24,7 @@ object collarDivino{
 	}
 	
 	method aportar(){
-		return dueno.valorBase() + perlas
+		return  perlas
 	}
 	
 	method dueno(unDueno){
@@ -45,7 +45,7 @@ object mascaraOscura{
 	}
 	
 	method calcularSuAporte(){
-		return (dueno.valorBase() + (dueno.valorFuerzaOscura()/2).max(4))
+		return (dueno.valorFuerzaOscura()/2).max(4)
 	}
 
 }
@@ -59,7 +59,7 @@ object armadura{
 	}
 	
 	method aportar(){
-		return dueno.valorBase() + 2 + refuerzoArmadura.aportar()
+		return 2 + refuerzoArmadura.aportar()
 	}
 		
 	method refuerzoArmadura(){
@@ -71,3 +71,19 @@ object armadura{
     }
 
 }
+
+//object espejo{
+//	var dueno
+	
+//	method dueno(unDueno){
+//		dueno = unDueno
+//	}
+	
+//	method retornarMasPoderoso(unArtefacto){
+//	return unArtefacto.aportar()
+	
+//	}
+	
+//    method aportar(){
+//	return self.retornarMasPoderoso(dueno.objetoMasPoderoso())
+//	}
