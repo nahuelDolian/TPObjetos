@@ -38,7 +38,7 @@ object rolando {
      	//  punto 2 //
 	
 	method valorBase(unValor){
-		valorBase=unValor
+		valorBase= valorBase + unValor
 	}
 	
 	method valorBase(){
@@ -52,7 +52,7 @@ object rolando {
 	}
 	method quitarArtefacto(unArtefacto){
 		artefactosDeLucha.remove(unArtefacto)
-		self.valorBase(valorBase-(unArtefacto.aportar() - valorBase))
+		self.valorBase(-(unArtefacto.aportar()))
 	}
 	
     method artefactosDeLucha(){
@@ -63,8 +63,9 @@ object rolando {
 	return self.artefactosDeLucha().size() >= 5
 	
 	}
-    
-    
+	
+//	method objetoMasPoderoso(){
+//	return self.artefactosDeLucha().max{unArtefacto => unArtefacto.aportar()}
+ //   }  
  
  }
- 
