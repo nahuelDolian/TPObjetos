@@ -1,7 +1,6 @@
 import rolando.*
 
-object  cotaDeMalla {
-	
+object cotaDeMalla {
 	
 	method aportar(){
 		return 1
@@ -10,6 +9,7 @@ object  cotaDeMalla {
 
 object bendicion{
 	var dueno
+	
 	method aportar(){
 		return dueno.nivelDeHechiceria()
 	}
@@ -17,3 +17,23 @@ object bendicion{
 		dueno=unDueno
 	}
 }
+
+object hechizo{
+	var dueno
+	
+	method aportar(){
+		return dueno.HechizoPreferido()
+	}
+	
+	method dueno(unDueno){
+		dueno=unDueno
+	   }
+}
+
+object ninguno{
+	
+	method aportar(){
+	   return 0
+	}
+	   }
+	   
