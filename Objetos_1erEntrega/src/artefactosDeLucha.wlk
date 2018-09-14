@@ -59,7 +59,7 @@ object armadura{
 	}
 	
 	method aportar(){
-		return 2 + refuerzoArmadura.aportar()
+		return 2 + self.refuerzoArmadura()
 	}
 		
 	method refuerzoArmadura(){
