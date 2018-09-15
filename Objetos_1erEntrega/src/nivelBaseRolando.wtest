@@ -1,0 +1,7 @@
+import rolando.*
+
+test "conocer nivel base de hechiceria de Rolando" {
+
+	assert.that(rolando.nivelBase()==3)
+
+}
