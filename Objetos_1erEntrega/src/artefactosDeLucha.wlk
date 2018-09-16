@@ -14,6 +14,10 @@ object espadaDelDestino {
 		return 3
 	}
 	
+
+	method damePoder() {
+		return self.aportar()
+	}
 }
 
 object collarDivino{
@@ -32,6 +36,10 @@ object collarDivino{
 		dueno = unDueno
 }
 
+	method damePoder() {
+		return self.aportar()
+	}
+
 }
 
 object mascaraOscura{
@@ -49,6 +57,10 @@ object mascaraOscura{
 		return (dueno.valorFuerzaOscura()/2).max(4)
 	}
 	
+
+	method damePoder() {
+		return self.aportar()
+	}
 
 }
 
@@ -73,6 +85,9 @@ object armadura{
     }
     
 
+	method damePoder() {
+		return self.aportar()
+	}
 }
 
 object espejo{
@@ -86,12 +101,27 @@ object espejo{
 	   return unArtefacto.aportar()
 	
 	}
+
+	method damePoder() {
+		return 0
+	}
 	
   method aportar(){
-  if (dueno.objetoMasPoderoso() != []) {
-     return self.retornarMasPoderoso(dueno.objetoMasPoderoso())
-     } else {
- 	 return 0
-     }     
+  	return dueno.objetoMasPoderoso().damePoder()
   }  
+}
+
+object libroDeHechizos{
+ var listaDeHechizos = []
+
+   method listaDeHechizos(unaListaDeHechizos){
+      listaDeHechizos = unaListaDeHechizos
+    }
+    
+    method aportar(){
+   return listaDeHechizos.sum(hechizo -> hechizo.aportar())
+}
+	method damePoder() {
+		return self.aportar()
+	}
 }

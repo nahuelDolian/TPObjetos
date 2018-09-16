@@ -7,7 +7,7 @@ object rolando {
 	var hechizoPreferido
 	var valorFuerzaOscura = 5
 	var artefactosDeLucha = []
-	var valorBase = 1
+	var valorBaseDeLucha = 1
 	
 	//punto 1	
 	method valorFuerzaOscura(){
@@ -16,14 +16,14 @@ object rolando {
 	method valorFuerzaOscura(unValor){
 		valorFuerzaOscura=unValor
 	}
-	method nivelBase (){
+	method nivelBaseHechiceria(){
 		return 3
 	}
 	method hechizoPreferido(unHechizo){
 		hechizoPreferido=unHechizo
 	} 
 	method nivelDeHechiceria(){
-		return ( (self.nivelBase() * self.poderHechizoPreferido()) +  self.valorFuerzaOscura())
+		return ( (self.nivelBaseHechiceria() * self.poderHechizoPreferido()) +  self.valorFuerzaOscura())
 	}
 	method poderHechizoPreferido(){
 		return hechizoPreferido.poder()
@@ -37,22 +37,19 @@ object rolando {
 
      	//  punto 2 //
 	
-	method valorBase(unValor){
-		valorBase += unValor
-	}
 	
-	method valorBase(){
-		return valorBase
+	
+	method damePoderLucha(){
+		return valorBaseDeLucha + artefactosDeLucha.sum{artefacto => artefacto.aportar()}
 	}
 	
 	method agregarArtefacto(unArtefacto){
 		artefactosDeLucha.add(unArtefacto)
 		unArtefacto.dueno(self)
-		self.valorBase(unArtefacto.aportar())
 	}
+	
 	method quitarArtefacto(unArtefacto){
 		artefactosDeLucha.remove(unArtefacto)
-		self.valorBase(-(unArtefacto.aportar()))
 	}
 	
     method artefactosDeLucha(){
@@ -63,17 +60,10 @@ object rolando {
 	return self.artefactosDeLucha().size() >= 5
 	
 	}
-	
-
-	method sacarEspejo(){
-			return artefactosDeLucha.filter({artefacto => !artefacto.equals(espejo)})
-	
-	}
-	
+		
 	method objetoMasPoderoso(){
-		return self.sacarEspejo().max{unArtefacto => unArtefacto.aportar()}
+		return artefactosDeLucha.max{unArtefacto => unArtefacto.damePoder()}
 	}
-	
-    }  
+}  
  
  
