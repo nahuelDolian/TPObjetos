@@ -38,7 +38,6 @@ object rolando {
      	//  punto 2 //
 	
 	
-	
 	method damePoderLucha(){
 		return valorBaseDeLucha + artefactosDeLucha.sum{artefacto => artefacto.aportar()}
 	}
@@ -63,6 +62,10 @@ object rolando {
 		
 	method objetoMasPoderoso(){
 		return artefactosDeLucha.max{unArtefacto => unArtefacto.damePoder()}
+	}
+	
+	method valorBaseDeLucha(unValor){
+	 	valorBaseDeLucha = unValor
 	}
 }  
  
