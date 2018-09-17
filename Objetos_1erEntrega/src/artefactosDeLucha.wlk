@@ -119,14 +119,18 @@ object libroDeHechizos{
     }
     
     method aportar(){
-   return listaDeHechizos.sum(hechizo -> hechizo.aportar())
+   		return self.listaHechizosPoderosos().sum{unHechizo => unHechizo.damePoder()}
+   		
 }
+	method listaHechizosPoderosos(){
+		return listaDeHechizos.filter{unHechizo => unHechizo.esPoderoso()}
+	}
+	
+	
 	method damePoder() {
 		return self.aportar()
 	}
 	
-	method poder() {
-		return self.aportar()
-	}
+	
 	
 }

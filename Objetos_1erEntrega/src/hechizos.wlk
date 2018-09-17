@@ -7,16 +7,16 @@ object espectroMalefico {
 	method nombre(unNombre){
 		nombre=unNombre
 	}
-	method poder(){
+	method damePoder(){
 		return nombre.length()
 	}
 	method esPoderoso(){
-		return self.poder() > 15
+		return self.damePoder() > 15
 	}
 }
 
 object hechizoBasico {
-	method poder (){
+	method damePoder(){
 		return 10
 	}
 	method esPoderoso(){

@@ -28,6 +28,11 @@ object hechizo{
 	method dueno(unDueno){
 		dueno=unDueno
 	   }
+	 
+	method damePoder(){
+		return self.aportar()
+	}
+	
 }
 
 object ninguno{

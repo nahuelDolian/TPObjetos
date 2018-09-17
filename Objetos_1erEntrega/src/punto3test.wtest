@@ -141,6 +141,7 @@ test "Saber cuál es el nivel de hechicería de Rolando,
      
      rolando.hechizoPreferido(libroDeHechizos)
      libroDeHechizos.listaDeHechizos([espectroMalefico,hechizoBasico]) 	
+     espectroMalefico.nombre("espectro malefico")
      hechizo.dueno(rolando)
      	
 	 assert.equals(56,rolando.nivelDeHechiceria())      	

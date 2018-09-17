@@ -26,7 +26,7 @@ object rolando {
 		return ( (self.nivelBaseHechiceria() * self.poderHechizoPreferido()) +  self.valorFuerzaOscura())
 	}
 	method poderHechizoPreferido(){
-		return hechizoPreferido.poder()
+		return hechizoPreferido.damePoder()
 	}
 	method eclipse(){
 		self.valorFuerzaOscura(valorFuerzaOscura * 2)
