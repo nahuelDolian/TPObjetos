@@ -124,4 +124,9 @@ object libroDeHechizos{
 	method damePoder() {
 		return self.aportar()
 	}
+	
+	method poder() {
+		return self.aportar()
+	}
+	
 }
