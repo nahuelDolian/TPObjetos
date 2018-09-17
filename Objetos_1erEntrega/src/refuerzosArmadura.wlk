@@ -22,7 +22,7 @@ object hechizo{
 	var dueno
 	
 	method aportar(){
-		return dueno.HechizoPreferido()
+		return dueno.hechizoPreferido()
 	}
 	
 	method dueno(unDueno){
