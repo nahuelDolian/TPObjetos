@@ -1,0 +1,80 @@
+import rolando.*
+import artefactosDeLucha.*
+import refuerzosArmadura.*
+import hechizos.*
+
+/* Consiga: 
+
+   Rolando debe tener como artefactos la espada del destino, 
+   el collar divino y la máscara oscura.
+   El collar divino debe tener 5 perlas. */
+  
+
+// Conocer la habilidad para la lucha de Rolando :
+
+test "Habilidad base para la lucha, debe ser 1" {
+	
+	rolando.artefactosDeLucha()
+	assert.equals(1,rolando.damePoderLucha())
+}
+
+test "Con todos los artefactos mencionados, debe dar 13" {
+	
+	rolando.agregarArtefacto(espadaDelDestino)
+	collarDivino.cantidadPerlas(5)
+	rolando.agregarArtefacto(collarDivino)
+	rolando.agregarArtefacto(mascaraOscura)
+	rolando.artefactosDeLucha()
+	assert.equals(13,rolando.damePoderLucha())
+}
+
+test "Con todos los artefactos mencionados, pero con collarDivino con 3 perlas.
+	  Debe dar 11" {
+	
+	rolando.agregarArtefacto(espadaDelDestino)
+	collarDivino.cantidadPerlas(3)
+	rolando.agregarArtefacto(collarDivino)
+	rolando.agregarArtefacto(mascaraOscura)
+	rolando.artefactosDeLucha()
+	assert.equals(11,rolando.damePoderLucha())
+	
+}
+
+test "Con todos los artefactos mencionados,pero con valor base para la lucha en 8.
+	  Debe dar 20" {
+	
+	rolando.valorBaseDeLucha(8)
+	rolando.agregarArtefacto(espadaDelDestino)
+	collarDivino.cantidadPerlas(5)
+	rolando.agregarArtefacto(collarDivino)
+	rolando.agregarArtefacto(mascaraOscura)
+	rolando.artefactosDeLucha()
+	assert.equals(20,rolando.damePoderLucha())
+}
+
+test "Eliminando la máscara oscura de los artefactos.
+      Debe dar 9 " {
+      
+	rolando.agregarArtefacto(espadaDelDestino)
+	collarDivino.cantidadPerlas(5)
+	rolando.agregarArtefacto(collarDivino)
+	rolando.agregarArtefacto(mascaraOscura)
+	rolando.quitarArtefacto(mascaraOscura)
+	rolando.artefactosDeLucha()
+	assert.equals(9,rolando.damePoderLucha())		
+}
+
+
+test "Hacer que ocurra un eclipse y obtener el valor de lucha
+	  de la máscara oscura. Debe dar 5" {
+	  
+	rolando.agregarArtefacto(espadaDelDestino)
+	collarDivino.cantidadPerlas(5)
+	rolando.agregarArtefacto(collarDivino)
+	rolando.agregarArtefacto(mascaraOscura)	
+	rolando.eclipse()
+	assert.equals(5,mascaraOscura.calcularSuAporte())	
+	  	
+}
+
+
