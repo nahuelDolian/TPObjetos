@@ -1,7 +1,7 @@
-import rolando.*
+import Personaje*
 import artefactosDeLucha.*
 
-object espectroMalefico {
+class Hechizo {
 	var nombre = "espectro malefico"
 	
 	method nombre(unNombre){
@@ -15,7 +15,13 @@ object espectroMalefico {
 	}
 }
 
-object hechizoBasico {
+class EspectroMalefico inherits Hechizo {
+	}
+	
+class Logo inherits Hechizo{
+	}
+
+class hechizoBasico {
 	method aportar(){
 		return 10
 	}
