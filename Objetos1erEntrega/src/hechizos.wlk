@@ -1,4 +1,4 @@
-import Personaje*
+import Personaje.*
 import artefactosDeLucha.*
 
 class Hechizo {
