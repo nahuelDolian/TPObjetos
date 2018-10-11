@@ -6,13 +6,14 @@ import fuerzaOscura.*
 class Personaje{
 	
 	var hechizoPreferido
-	var fuerzaOscura=fuerzaOscura.valor()
+	var fuerzaOscura
 	var artefactosDeLucha = []
 	var valorBaseDeLucha = 1
 	var property nivelBaseHechiceria=3
+	
 	//punto 1	
 	method valorFuerzaOscura(){
-		return fuerzaOscura  
+		return fuerzaOscura.valor()
 	}
 	method hechizoPreferido(unHechizo){
 		hechizoPreferido=unHechizo
@@ -63,5 +64,4 @@ class Personaje{
 	 	valorBaseDeLucha = unValor
 	}
 }  
- 
  
