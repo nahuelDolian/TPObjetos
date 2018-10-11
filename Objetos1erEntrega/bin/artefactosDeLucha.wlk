@@ -1,9 +1,40 @@
-import rolando.*
+import Personaje*
+import artefactosDeLucha.*
+
+class Hechizo {
+	var nombre = "espectro malefico"
+	
+	method nombre(unNombre){
+		nombre=unNombre
+	}
+	method aportar(){
+		return nombre.length()
+	}
+	method esPoderoso(){
+		return self.damePoder() > 15
+	}
+}
+
+class EspectroMalefico inherits Hechizo {
+	}
+	
+class Logo inherits Hechizo{
+	}
+
+class hechizoBasico {
+	method aportar(){
+		return 10
+	}
+	method esPoderoso(){
+		return false
+	}
+}
+---------------------------------------------------------------------
+import Personaje.*
 import hechizos.*
 import refuerzosArmadura.*
 
-
-object espadaDelDestino {
+class ArmasBlancas {
 	var dueno
 	
 	method dueno(unDueno){
@@ -12,13 +43,18 @@ object espadaDelDestino {
 	
 	method aportar(){
 		return 3
+		}
+}
+
+class Espadas inherits ArmasBlancas{
+		}
+	
+class Hachas inherits ArmasBlancas{
 	}
 	
+class Lanzas inherits ArmasBlancas{
+	}	 
 
-	method damePoder() {
-		return self.aportar()
-	}
-}
 
 object collarDivino{
 	var perlas = 0
@@ -39,39 +75,45 @@ object collarDivino{
 	method damePoder() {
 		return self.aportar()
 	}
-
 }
 
-object mascaraOscura{
+class Mascara {
+	var indiceDeOscuridad
 	var dueno
-	
+	var minimoDepoder = 4
+		
 	method dueno(unDueno){
 		dueno = unDueno
+	}
+	
+	method minimoDePoder(valorPoder){
+		minimoDePoder = valorPoder
+	}
+	
+	method indiceDeOscuridad(indice){
+		indiceDeOscuridad = indice
 	}
 	
 	method aportar(){
-		return self.calcularSuAporte() 	
+		return self.calcularSuAporte().max(4) 	
 	}
 	
 	method calcularSuAporte(){
-		return (dueno.valorFuerzaOscura()/2).max(4)
+		return (dueno.valorFuerzaOscura()/2)*indiceDeOscuridad()
 	}
-	
-
-	method damePoder() {
-		return self.aportar()
-	}
-
 }
 
-object armadura{
+
+class armadura{
 	var dueno
 	var refuerzoArmadura
+	var valorBase
 	
-	method dueno(unDueno){
-		dueno = unDueno
+	constructor(dueno, valorBase){
+		dueno = dueno
+		valorBase = valorBase
 	}
-	
+		
 	method aportar(){
 		return 2 + self.refuerzoArmadura()
 	}
@@ -84,7 +126,6 @@ object armadura{
 		refuerzoArmadura=unRefuerzo	
     }
     
-
 	method damePoder() {
 		return self.aportar()
 	}
@@ -130,7 +171,5 @@ object libroDeHechizos{
 	method damePoder() {
 		return self.aportar()
 	}
-	
-	
 	
 }
