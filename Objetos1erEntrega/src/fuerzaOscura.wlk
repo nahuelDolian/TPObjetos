@@ -1,4 +1,7 @@
 object fuerzaOscura {
-		var property valor = 5
+	var valor = 5
 	
+	method valor(){
+		return valor
+	}	
 }
