@@ -7,11 +7,14 @@ class ArmaBlanca {
 	
 	method dueno(unDueno){
 		dueno = unDueno
-		}
+	}
 	
 	method aportar(){
 		return 3
-		}
+	}
+	method damePoder(){
+		return self.aportar()
+	}
 }
 
 class Espada inherits ArmaBlanca{
@@ -69,6 +72,9 @@ class Mascara {
 	method calcularSuAporte(){
 		return (dueno.valorFuerzaOscura()/2)*indiceDeOscuridad
 	}	
+	method damePoder(){
+		return self.aportar()
+	}
 }
 
 
@@ -84,7 +90,7 @@ class Armadura{
 	}
 		
 	method aportar(){
-		return 2 + self.refuerzoArmadura()
+		return valorBase + self.refuerzoArmadura()
 	}
 		
 	method refuerzoArmadura(){
@@ -92,7 +98,8 @@ class Armadura{
 	}
 	
 	method refuerzoArmadura(unRefuerzo){
-		refuerzoArmadura=unRefuerzo	
+		refuerzoArmadura=unRefuerzo
+		refuerzoArmadura.dueno(dueno)	
     }
     
 	method damePoder() {
@@ -100,6 +107,9 @@ class Armadura{
 	}
 	method dueno(unDueno){
 		dueno = unDueno
+	}
+	method cambiarRefuerzo(valor){
+		refuerzoArmadura.refuerzo(valor)
 	}
 }
 
