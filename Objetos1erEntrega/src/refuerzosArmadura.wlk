@@ -1,4 +1,4 @@
-import rolando.*
+import personaje.*
 
 object cotaDeMalla {
 	
@@ -6,7 +6,6 @@ object cotaDeMalla {
 		return 1
 	}
 }
-
 object bendicion{
 	var dueno
 	
@@ -17,12 +16,11 @@ object bendicion{
 		dueno=unDueno
 	}
 }
-
 object hechizo{
 	var dueno
 	
 	method aportar(){
-		return dueno.hechizoPreferido()
+		return dueno.hechizoPreferido().aportar()
 	}
 	
 	method dueno(unDueno){
@@ -30,11 +28,9 @@ object hechizo{
 	   }
 	 
 }
-
 object ninguno{
 	
 	method aportar(){
 	   return 0
 	}
-	   }
-	   
+}
