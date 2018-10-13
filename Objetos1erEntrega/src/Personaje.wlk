@@ -10,6 +10,7 @@ class Personaje{
 	var artefactosDeLucha = []
 	var valorBaseDeLucha = 1
 	var property nivelBaseHechiceria = 3
+	var poderDeHechiceria 
 	
 	//punto 1	
 	method valorFuerzaOscura(){
@@ -19,7 +20,10 @@ class Personaje{
 		hechizoPreferido=unHechizo
 	} 
 	method nivelDeHechiceria(multiplo){
-		return ((self.nivelBaseHechiceria() * (self.poderHechizoPreferido() * multiplo)) +  self.valorFuerzaOscura())
+		poderDeHechiceria = ((self.nivelBaseHechiceria() * (self.poderHechizoPreferido() * multiplo)) +  self.valorFuerzaOscura())
+	}
+	method poderDeHechiceria(){
+		return poderDeHechiceria
 	}
 	method poderHechizoPreferido(){
 		return hechizoPreferido.aportar()
