@@ -136,13 +136,23 @@ object espejo{
 
 object libroDeHechizos{
 	var listaDeHechizos = []
+	var multiplicador = 1
+	
+	
+	method multiplicado(nuevoMultiplicador){
+		multiplicador = nuevoMultiplicador
+	}
+	method multiplicador(){
+		return multiplicador
+	}
+	
 
     method listaDeHechizos(unaListaDeHechizos){
       listaDeHechizos = unaListaDeHechizos
     }
     
     method aportar(){
-   		return self.listaHechizosPoderosos().sum{unHechizo => unHechizo.damePoder()}
+   		return self.listaHechizosPoderosos().sum{unHechizo => unHechizo.aportar()}
    		
 	}
 	method listaHechizosPoderosos(){
