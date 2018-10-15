@@ -18,7 +18,7 @@ object bendicion{
 	var dueno
 	
 	method aportar(){
-		return dueno.poderDeHechiceria()
+		return dueno.nivelDeHechiceria()
 	}
 	method dueno(unDueno){
 		dueno=unDueno
