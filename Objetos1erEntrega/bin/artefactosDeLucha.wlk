@@ -1,63 +1,34 @@
-import Personaje*
-import artefactosDeLucha.*
-
-class Hechizo {
-	var nombre = "espectro malefico"
-	
-	method nombre(unNombre){
-		nombre=unNombre
-	}
-	method aportar(){
-		return nombre.length()
-	}
-	method esPoderoso(){
-		return self.damePoder() > 15
-	}
-}
-
-class EspectroMalefico inherits Hechizo {
-	}
-	
-class Logo inherits Hechizo{
-	}
-
-class hechizoBasico {
-	method aportar(){
-		return 10
-	}
-	method esPoderoso(){
-		return false
-	}
-}
----------------------------------------------------------------------
-import Personaje.*
+import personaje.*
 import hechizos.*
 import refuerzosArmadura.*
 
-class ArmasBlancas {
+class ArmaBlanca {
 	var dueno
 	
 	method dueno(unDueno){
 		dueno = unDueno
-		}
+	}
 	
 	method aportar(){
 		return 3
-		}
+	}
+	method damePoder(){
+		return self.aportar()
+	}
 }
 
-class Espadas inherits ArmasBlancas{
-		}
-	
-class Hachas inherits ArmasBlancas{
+class Espada inherits ArmaBlanca{
 	}
 	
-class Lanzas inherits ArmasBlancas{
+class Hacha inherits ArmaBlanca{
+	}
+	
+class Lanza inherits ArmaBlanca{
 	}	 
 
 
 object collarDivino{
-	var perlas = 0
+	var perlas = 5
 	var dueno
 	
 	method cantidadPerlas(unasPerlas){
@@ -70,7 +41,7 @@ object collarDivino{
 	
 	method dueno(unDueno){
 		dueno = unDueno
-}
+	}
 
 	method damePoder() {
 		return self.aportar()
@@ -80,7 +51,7 @@ object collarDivino{
 class Mascara {
 	var indiceDeOscuridad
 	var dueno
-	var minimoDepoder = 4
+	var minimoDePoder = 4
 		
 	method dueno(unDueno){
 		dueno = unDueno
@@ -95,27 +66,31 @@ class Mascara {
 	}
 	
 	method aportar(){
-		return self.calcularSuAporte().max(4) 	
+		return self.calcularSuAporte().max(minimoDePoder) 	
 	}
 	
 	method calcularSuAporte(){
-		return (dueno.valorFuerzaOscura()/2)*indiceDeOscuridad()
+		return (dueno.valorFuerzaOscura()/2)*indiceDeOscuridad
+	}	
+	method damePoder(){
+		return self.aportar()
 	}
 }
 
 
-class armadura{
+class Armadura{
 	var dueno
 	var refuerzoArmadura
 	var valorBase
 	
-	constructor(dueno, valorBase){
-		dueno = dueno
-		valorBase = valorBase
+	constructor(nuevoDueno, nuevoValorBase, nuevoRefuerzoArmadura){
+		dueno = nuevoDueno
+		valorBase = nuevoValorBase
+		refuerzoArmadura = nuevoRefuerzoArmadura
 	}
 		
 	method aportar(){
-		return 2 + self.refuerzoArmadura()
+		return valorBase + self.refuerzoArmadura()
 	}
 		
 	method refuerzoArmadura(){
@@ -123,23 +98,30 @@ class armadura{
 	}
 	
 	method refuerzoArmadura(unRefuerzo){
-		refuerzoArmadura=unRefuerzo	
+		refuerzoArmadura=unRefuerzo
+		refuerzoArmadura.dueno(dueno)	
     }
     
 	method damePoder() {
 		return self.aportar()
+	}
+	method dueno(unDueno){
+		dueno = unDueno
+	}
+	method cambiarRefuerzo(valor){
+		refuerzoArmadura.refuerzo(valor)
 	}
 }
 
 object espejo{
 	var dueno
 	
-		method dueno(unDueno){
+	method dueno(unDueno){
 		dueno = unDueno
 	}
 	
 	method retornarMasPoderoso(unArtefacto){
-	   return unArtefacto.aportar()
+		return unArtefacto.aportar()
 	
 	}
 
@@ -147,22 +129,32 @@ object espejo{
 		return 0
 	}
 	
-  method aportar(){
-  	return dueno.objetoMasPoderoso().damePoder()
-  }  
+	method aportar(){
+  		return dueno.objetoMasPoderoso().damePoder()
+	}  
 }
 
 object libroDeHechizos{
- var listaDeHechizos = []
+	var listaDeHechizos = []
+	var multiplicador = 1
+	
+	
+	method multiplicado(nuevoMultiplicador){
+		multiplicador = nuevoMultiplicador
+	}
+	method multiplicador(){
+		return multiplicador
+	}
+	
 
-   method listaDeHechizos(unaListaDeHechizos){
+    method listaDeHechizos(unaListaDeHechizos){
       listaDeHechizos = unaListaDeHechizos
     }
     
     method aportar(){
-   		return self.listaHechizosPoderosos().sum{unHechizo => unHechizo.damePoder()}
+   		return self.listaHechizosPoderosos().sum{unHechizo => unHechizo.aportar()}
    		
-}
+	}
 	method listaHechizosPoderosos(){
 		return listaDeHechizos.filter{unHechizo => unHechizo.esPoderoso()}
 	}

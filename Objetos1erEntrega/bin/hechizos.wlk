@@ -1,17 +1,26 @@
-import Personaje*
+import personaje.*
 import artefactosDeLucha.*
 
 class Hechizo {
 	var nombre = "espectro malefico"
+	var multiplicador = 1
 	
-	method nombre(unNombre){
+	
+	method multiplicado(nuevoMultiplicador){
+		multiplicador = nuevoMultiplicador
+	}
+	method multiplicador(){
+		return multiplicador
+	}
+	
+	method cambiarNombre(unNombre){
 		nombre=unNombre
 	}
 	method aportar(){
 		return nombre.length()
 	}
 	method esPoderoso(){
-		return self.damePoder() > 15
+		return self.aportar() > 15
 	}
 }
 
@@ -21,7 +30,16 @@ class EspectroMalefico inherits Hechizo {
 class Logo inherits Hechizo{
 	}
 
-class hechizoBasico {
+class HechizoBasico {
+		var multiplicador = 1
+	
+	
+	method multiplicado(nuevoMultiplicador){
+		multiplicador = nuevoMultiplicador
+	}
+	method multiplicador(){
+		return multiplicador
+	}
 	method aportar(){
 		return 10
 	}
