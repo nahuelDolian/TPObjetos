@@ -4,6 +4,7 @@ import refuerzosArmadura.*
 
 class ArmaBlanca {
 	var dueno
+	var precioEnMonedas = 15
 	
 	method dueno(unDueno){
 		dueno = unDueno
@@ -30,6 +31,7 @@ class Lanza inherits ArmaBlanca{
 object collarDivino{
 	var perlas = 5
 	var dueno
+	var precioEnMonedas = 2 * perlas
 	
 	method cantidadPerlas(unasPerlas){
 		perlas=unasPerlas
@@ -52,6 +54,7 @@ class Mascara {
 	var indiceDeOscuridad
 	var dueno
 	var minimoDePoder = 4
+	var precioEnMonedas = 0 // no dice nada
 		
 	method dueno(unDueno){
 		dueno = unDueno
@@ -82,6 +85,7 @@ class Armadura{
 	var dueno
 	var refuerzoArmadura
 	var valorBase
+	var precioEnMonedas = 2 
 	
 	constructor(nuevoDueno, nuevoValorBase, nuevoRefuerzoArmadura){
 		dueno = nuevoDueno
@@ -165,3 +169,5 @@ object libroDeHechizos{
 	}
 	
 }
+
+	

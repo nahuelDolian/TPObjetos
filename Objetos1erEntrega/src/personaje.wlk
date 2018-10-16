@@ -10,6 +10,7 @@ class Personaje{
 	var artefactosDeLucha = []
 	var valorBaseDeLucha = 1
 	var property nivelBaseHechiceria = 3
+	var monedasDeOro = 100
 	
 	//punto 1	
 	method valorFuerzaOscura(){
@@ -63,4 +64,36 @@ class Personaje{
 	method valorBaseDeLucha(unValor){
 	 	valorBaseDeLucha = unValor
 	}
+	
+	//punto 4
+	
+	
+method comprarArtefacto(artefacto){
+	if (self.monedasDeOro() >= artefacto.precioEnMonedas()){
+		
+	}else{
+	
+	}
+	}
+method comprarHechiso(hechiso){
+	if (self.canjear()){
+		
+	}else{
+		if(self.comprarConMonedas()){
+		
+	}
+	
+}
+}
+method canjear(){
+	return self.hechizoFavorito.precioEnMonedas() / 2 >= hechisoAComprar.precioEnMonedas()
+	
+}
+
+
+method comprarConMonedas(){
+	return self.monedasDeOro() >= hechisoAComprar.precioEnMonedas()
+}
+
+
 }  
