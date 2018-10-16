@@ -66,34 +66,25 @@ class Personaje{
 	}
 	
 	//punto 4
-	
-	
-method comprarArtefacto(artefacto){
-	if (self.monedasDeOro() >= artefacto.precioEnMonedas()){
-		
-	}else{
+	method comprar(artefacto){
+		if (monedasDeOro >= artefacto.precio()){
+			self.agregarArtefacto(artefacto)
+		}else{
+			 self.error("no Tengo suficiente dinero")
+			}}
+	method comprarHechizo(hechizo){
+		if (self.canjear(hechizo)){
+			self.hechizoPreferido(hechizo)
+		}else{
+			self.comprar(hechizo)
+	                      }
 	
 	}
-	}
-method comprarHechiso(hechiso){
-	if (self.canjear()){
-		
-	}else{
-		if(self.comprarConMonedas()){
+	method canjear(hechizo){
+		return hechizoPreferido.precio() /2 >= hechizo.precio() 
 		
 	}
 	
-}
-}
-method canjear(){
-	return self.hechizoFavorito.precioEnMonedas() / 2 >= hechisoAComprar.precioEnMonedas()
-	
-}
-
-
-method comprarConMonedas(){
-	return self.monedasDeOro() >= hechisoAComprar.precioEnMonedas()
-}
 
 
 }  
