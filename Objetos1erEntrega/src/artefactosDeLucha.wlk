@@ -4,7 +4,9 @@ import refuerzosArmadura.*
 
 class ArmaBlanca {
 	var dueno
-	var precioEnMonedas = 15
+	method precio(){
+		return 5* self.aportar()
+	}
 	
 	method dueno(unDueno){
 		dueno = unDueno
@@ -31,7 +33,9 @@ class Lanza inherits ArmaBlanca{
 object collarDivino{
 	var perlas = 5
 	var dueno
-	var precioEnMonedas = 2 * perlas
+	method precio(){
+		return 2 * perlas
+	}
 	
 	method cantidadPerlas(unasPerlas){
 		perlas=unasPerlas
@@ -85,13 +89,14 @@ class Armadura{
 	var dueno
 	var refuerzoArmadura
 	var valorBase
-	var precioEnMonedas = 2 
 	
 	constructor(nuevoDueno, nuevoValorBase, nuevoRefuerzoArmadura){
 		dueno = nuevoDueno
 		valorBase = nuevoValorBase
 		refuerzoArmadura = nuevoRefuerzoArmadura
 	}
+	method precio(){
+		return 2}
 		
 	method aportar(){
 		return valorBase + self.refuerzoArmadura()
@@ -119,7 +124,9 @@ class Armadura{
 
 object espejo{
 	var dueno
-	
+	method precio(){
+		return 90
+	}
 	method dueno(unDueno){
 		dueno = unDueno
 	}
@@ -142,6 +149,9 @@ object libroDeHechizos{
 	var listaDeHechizos = []
 	var multiplicador = 1
 	
+	method precio(){
+		return listaDeHechizos.lenght() + listaDeHechizos.sum({hechizo => hechizo.aportaSiSosPoderoso()})
+	}
 	
 	method multiplicado(nuevoMultiplicador){
 		multiplicador = nuevoMultiplicador
