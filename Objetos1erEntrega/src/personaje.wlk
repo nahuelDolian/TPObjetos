@@ -58,7 +58,7 @@ class Personaje{
 	}
 		
 	method objetoMasPoderoso(){
-		return artefactosDeLucha.max{unArtefacto => unArtefacto.damePoder()}
+		return artefactosDeLucha.max{unArtefacto => unArtefacto.aportar()}
 	}
 	
 	method valorBaseDeLucha(unValor){
