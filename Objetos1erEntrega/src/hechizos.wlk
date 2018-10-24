@@ -4,6 +4,10 @@ import artefactosDeLucha.*
 class Hechizo {
 	var nombre 
 	var multiplicador = 1
+	
+	constructor (unNombre){
+	nombre=unNombre}
+	
 	method precio(){
 		return 10
 	}	
