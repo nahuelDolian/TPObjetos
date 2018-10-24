@@ -2,7 +2,7 @@ import personaje.*
 import artefactosDeLucha.*
 
 class Hechizo {
-	var nombre = "espectro malefico"
+	var nombre 
 	var multiplicador = 1
 	method precio(){
 		return 10
