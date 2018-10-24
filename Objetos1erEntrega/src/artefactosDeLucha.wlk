@@ -15,9 +15,7 @@ class ArmaBlanca {
 	method aportar(){
 		return 3
 	}
-	method damePoder(){
-		return self.aportar()
-	}
+	
 }
 
 class Espada inherits ArmaBlanca{
