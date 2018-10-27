@@ -146,12 +146,6 @@ object libroDeHechizos{
 	method listaHechizosPoderosos(){
 		return listaDeHechizos.filter{unHechizo => unHechizo.esPoderoso()}
 	}
-	
-	
-	method damePoder() {
-		return self.aportar()
-	}
-	
 }
 
 	
