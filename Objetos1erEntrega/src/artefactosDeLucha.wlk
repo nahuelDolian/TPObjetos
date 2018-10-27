@@ -1,6 +1,7 @@
 import personaje.*
 import hechizos.*
 import refuerzosArmadura.*
+import fuerzaOscura.*
 
 class ArmaBlanca {
 	var dueno
@@ -65,7 +66,7 @@ class Mascara {
 	}
 	
 	method calcularSuAporte(){
-		return (dueno.valorFuerzaOscura()/2)*indiceDeOscuridad
+		return (fuerzaOscura.valorFuerzaOscura()/2)*indiceDeOscuridad
 	}
 }
 

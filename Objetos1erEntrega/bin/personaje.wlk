@@ -25,6 +25,10 @@ class Personaje{
 	method esPoderoso(){
 		return hechizoPreferido.esPoderoso()
 	}
+	method valorBaseDeLucha(nuevoValor){
+		valorBaseDeLucha = nuevoValor
+		
+	}
       	//  punto 2 //
 	
 	

@@ -43,7 +43,7 @@ test"Cambiando el valor base de rolando a 8 la habilidad de lucha debe dar 20"{
 	assert.equals(20,rolando.damePoderLucha())
 }
 test"Ocurriendo un eclipse, la mascara debe de dar 5 de habilidad de lucha"{
-	rolando.eclipse()
+	fuerzaOscura.eclipse()
 	assert.equals(5,mascaraOscura.aportar())
 }
 test"Quitando la Mascara Oscura la habilidad de lucha de rolando debe dar 9"{
