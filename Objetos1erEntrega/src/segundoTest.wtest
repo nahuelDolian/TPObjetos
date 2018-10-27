@@ -7,7 +7,7 @@ import fuerzaOscura.*
 describe "Lucha reformulada" {
 
 const rolando = new Personaje()
-const espadaDelDestino = new Espada()
+const espadaDelDestino = new ArmaBlanca("Espada")
 const mascaraOscura = new Mascara()
 
 

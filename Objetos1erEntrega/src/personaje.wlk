@@ -6,28 +6,21 @@ import fuerzaOscura.*
 class Personaje{
 	
 	var hechizoPreferido
-	var valorFuerzaOscura = fuerzaOscura.valor()
 	var artefactosDeLucha = []
 	var valorBaseDeLucha = 1
 	var property nivelBaseHechiceria = 3
 	var monedasDeOro = 100
 	
 	//punto 1	
-	method valorFuerzaOscura(){
-		return valorFuerzaOscura  
-	}
 	method hechizoPreferido(unHechizo){
 		hechizoPreferido=unHechizo
 	} 
 	method nivelDeHechiceria(){
-		return ((self.nivelBaseHechiceria() * (self.poderHechizoPreferido() * hechizoPreferido.multiplicador())) +  self.valorFuerzaOscura())
+		return (self.nivelBaseHechiceria() * (self.poderHechizoPreferido() * hechizoPreferido.multiplicador())) + fuerzaOscura.valorFuerzaOscura()
 	}
 
 	method poderHechizoPreferido(){
 		return hechizoPreferido.aportar()
-	}
-	method eclipse(){
-		valorFuerzaOscura = (self.valorFuerzaOscura()) * 2
 	}
 	method esPoderoso(){
 		return hechizoPreferido.esPoderoso()
@@ -57,34 +50,45 @@ class Personaje{
 	
 	}
 		
+	method sacarEspejo(){
+		return artefactosDeLucha.filter({ artefacto => artefacto.tipoArtefacto() != "Espejo"})
+	}	
+		
 	method objetoMasPoderoso(){
-		return artefactosDeLucha.max{unArtefacto => unArtefacto.aportar()}
+		return (self.sacarEspejo()).max{unArtefacto => unArtefacto.aportar()}
 	}
 	
-	method valorBaseDeLucha(unValor){
-	 	valorBaseDeLucha = unValor
 	}
-	
 	//punto 4
-	method comprar(artefacto){
-		if (monedasDeOro >= artefacto.precio()){
-			self.agregarArtefacto(artefacto)
-		}else{
-			 self.error("no Tengo suficiente dinero")
-			}}
-	method comprarHechizo(hechizo){
-		if (self.canjear(hechizo)){
-			self.hechizoPreferido(hechizo)
-		}else{
-			self.comprar(hechizo)
-	                      }
+	
+	
+/*method comprarArtefacto(artefacto){
+	if (self.monedasDeOro() >= artefacto.precioEnMonedas()){
+		
+	}else{
 	
 	}
-	method canjear(hechizo){
-		return hechizoPreferido.precio() /2 >= hechizo.precio() 
+	}
+method comprarHechiso(hechiso){
+	if (self.canjear()){
+		
+	}else{
+		if(self.comprarConMonedas()){
 		
 	}
 	
+}
+}
+method canjear(){
+	return self.hechizoFavorito.precioEnMonedas() / 2 >= hechisoAComprar.precioEnMonedas()
+	
+}
+
+
+method comprarConMonedas(){
+	return self.monedasDeOro() >= hechisoAComprar.precioEnMonedas()
+}
 
 
 }  
+*/

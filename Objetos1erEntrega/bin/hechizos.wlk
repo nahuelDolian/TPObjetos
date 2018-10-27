@@ -4,6 +4,7 @@ import artefactosDeLucha.*
 class Hechizo {
 	var nombre = "espectro malefico"
 	var multiplicador = 1
+	var precioEnMonedas 
 	
 	
 	method multiplicado(nuevoMultiplicador){
@@ -31,8 +32,8 @@ class Logo inherits Hechizo{
 	}
 
 class HechizoBasico {
-		var multiplicador = 1
-	
+	var multiplicador = 1
+	var precioEnMonedas = 10
 	
 	method multiplicado(nuevoMultiplicador){
 		multiplicador = nuevoMultiplicador

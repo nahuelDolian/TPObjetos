@@ -3,6 +3,7 @@ import personaje.*
 object cotaDeMalla{
 	var dueno
 	var refuerzo = 1
+	var precioEnMonedas 
 	
 	method refuerzo(nuevoValor){
 		refuerzo = nuevoValor
@@ -26,6 +27,7 @@ object bendicion{
 }
 object hechizo{
 	var dueno
+	var precioEnMonedas = 2 
 	
 	method aportar(){
 		return dueno.poderHechizoPreferido()
@@ -38,6 +40,7 @@ object hechizo{
 }
 object ninguno{
 	var dueno
+	var precioEnMonedas = 0
 	
 	method aportar(){
 	   return 0

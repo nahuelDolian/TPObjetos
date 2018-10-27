@@ -1,7 +1,7 @@
 object fuerzaOscura {
-	var valor = 5
+	var property valorFuerzaOscura = 5
 	
-	method valor(){
-		return valor
-	}	
+	method eclipse(){
+		valorFuerzaOscura = (self.valorFuerzaOscura()) * 2
+	}
 }

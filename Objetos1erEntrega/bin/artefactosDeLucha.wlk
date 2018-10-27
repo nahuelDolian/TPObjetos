@@ -4,6 +4,14 @@ import refuerzosArmadura.*
 
 class ArmaBlanca {
 	var dueno
+	var precioEnMonedas
+	var property tipoArtefacto
+	
+	constructor(nuevoTipoArtefacto){
+		tipoArtefacto = nuevoTipoArtefacto
+		dueno = null
+		precioEnMonedas = 15
+	}
 	
 	method dueno(unDueno){
 		dueno = unDueno
@@ -12,24 +20,13 @@ class ArmaBlanca {
 	method aportar(){
 		return 3
 	}
-	method damePoder(){
-		return self.aportar()
-	}
 }
-
-class Espada inherits ArmaBlanca{
-	}
-	
-class Hacha inherits ArmaBlanca{
-	}
-	
-class Lanza inherits ArmaBlanca{
-	}	 
-
 
 object collarDivino{
 	var perlas = 5
 	var dueno
+	var precioEnMonedas = 2 * perlas
+	var property tipoArtefacto = "CollarDivino"
 	
 	method cantidadPerlas(unasPerlas){
 		perlas=unasPerlas
@@ -42,16 +39,14 @@ object collarDivino{
 	method dueno(unDueno){
 		dueno = unDueno
 	}
-
-	method damePoder() {
-		return self.aportar()
-	}
 }
 
 class Mascara {
 	var indiceDeOscuridad
 	var dueno
 	var minimoDePoder = 4
+	var precioEnMonedas = 0 // no dice nada
+	var property tipoArtefacto = "Mascara"
 		
 	method dueno(unDueno){
 		dueno = unDueno
@@ -71,9 +66,6 @@ class Mascara {
 	
 	method calcularSuAporte(){
 		return (dueno.valorFuerzaOscura()/2)*indiceDeOscuridad
-	}	
-	method damePoder(){
-		return self.aportar()
 	}
 }
 
@@ -82,11 +74,14 @@ class Armadura{
 	var dueno
 	var refuerzoArmadura
 	var valorBase
+	var precioEnMonedas = 2 
+	var property tipoArtefacto
 	
 	constructor(nuevoDueno, nuevoValorBase, nuevoRefuerzoArmadura){
 		dueno = nuevoDueno
 		valorBase = nuevoValorBase
 		refuerzoArmadura = nuevoRefuerzoArmadura
+		tipoArtefacto = "Armadura"
 	}
 		
 	method aportar(){
@@ -101,10 +96,6 @@ class Armadura{
 		refuerzoArmadura=unRefuerzo
 		refuerzoArmadura.dueno(dueno)	
     }
-    
-	method damePoder() {
-		return self.aportar()
-	}
 	method dueno(unDueno){
 		dueno = unDueno
 	}
@@ -113,30 +104,26 @@ class Armadura{
 	}
 }
 
-object espejo{
+class Espejo{
 	var dueno
+	var property tipoArtefacto = "Espejo"
 	
 	method dueno(unDueno){
 		dueno = unDueno
-	}
-	
-	method retornarMasPoderoso(unArtefacto){
-		return unArtefacto.aportar()
-	
-	}
-
-	method damePoder() {
-		return 0
-	}
-	
+	}	
 	method aportar(){
-  		return dueno.objetoMasPoderoso().damePoder()
-	}  
+		if((dueno.sacarEspejo()).isEmpty()){
+			return 0
+		}else{
+			return dueno.objetoMasPoderoso().aportar()
+		}
+	}
 }
 
 object libroDeHechizos{
 	var listaDeHechizos = []
 	var multiplicador = 1
+	var property tipoArtefacto = "LibroDeHechizos"
 	
 	
 	method multiplicado(nuevoMultiplicador){
@@ -165,3 +152,5 @@ object libroDeHechizos{
 	}
 	
 }
+
+	
