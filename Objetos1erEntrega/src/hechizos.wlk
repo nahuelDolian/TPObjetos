@@ -2,21 +2,13 @@ import personaje.*
 import artefactosDeLucha.*
 
 class Hechizo {
-	var nombre = "espectro malefico"
-	var multiplicador = 1
-	var precioEnMonedas 
+	var property nombre
+	var property multiplicador
 	
-	
-	method multiplicado(nuevoMultiplicador){
-		multiplicador = nuevoMultiplicador
-	}
-	method multiplicador(){
-		return multiplicador
-	}
-	
-	method cambiarNombre(unNombre){
-		nombre=unNombre
-	}
+	constructor(elegirMultiplicador, elegirNombre){
+		multiplicador = elegirMultiplicador
+		nombre = elegirNombre
+	}	
 	method aportar(){
 		return nombre.length()
 	}
@@ -32,15 +24,12 @@ class Logo inherits Hechizo{
 	}
 
 class HechizoBasico {
-	var multiplicador = 1
-	var precioEnMonedas = 10
+	var property multiplicador
 	
-	method multiplicado(nuevoMultiplicador){
-		multiplicador = nuevoMultiplicador
+	constructor(elegirMultiplicador){
+		multiplicador = elegirMultiplicador
 	}
-	method multiplicador(){
-		return multiplicador
-	}
+	
 	method aportar(){
 		return 10
 	}

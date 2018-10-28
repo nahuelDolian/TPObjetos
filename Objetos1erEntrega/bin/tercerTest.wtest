@@ -10,9 +10,9 @@ describe "group of tests" {
 	const espadaDelDestino = new ArmaBlanca("Espada")
 	const mascaraOscura = new Mascara()
 	const armadura = new Armadura(rolando, 2, ninguno)
-	const unHechizo = new Hechizo()
-	const hechizoBasico = new HechizoBasico()
-	const hechizoLogo = new Logo()
+	const unHechizo = new Hechizo(1,"espectro malefico")
+	const hechizoBasico = new HechizoBasico(1)
+	const hechizoLogo = new Logo(1,"espectro malefico")
 	const otraArmadura = new Armadura(rolando, 5, cotaDeMalla)
 	const espejo = new Espejo()
 	

@@ -5,16 +5,13 @@ import fuerzaOscura.*
 
 class Personaje{
 	
-	var hechizoPreferido
+	var property hechizoPreferido = null
 	var artefactosDeLucha = []
 	var valorBaseDeLucha = 1
 	var property nivelBaseHechiceria = 3
-	var monedasDeOro = 100
 	
 	//punto 1	
-	method hechizoPreferido(unHechizo){
-		hechizoPreferido=unHechizo
-	} 
+	
 	method nivelDeHechiceria(){
 		return (self.nivelBaseHechiceria() * (self.poderHechizoPreferido() * hechizoPreferido.multiplicador())) + fuerzaOscura.valorFuerzaOscura()
 	}

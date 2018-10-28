@@ -26,7 +26,6 @@ class ArmaBlanca {
 object collarDivino{
 	var perlas = 5
 	var dueno
-	var precioEnMonedas = 2 * perlas
 	var property tipoArtefacto = "CollarDivino"
 	
 	method cantidadPerlas(unasPerlas){
@@ -46,7 +45,6 @@ class Mascara {
 	var indiceDeOscuridad
 	var dueno
 	var minimoDePoder = 4
-	var precioEnMonedas = 0 // no dice nada
 	var property tipoArtefacto = "Mascara"
 		
 	method dueno(unDueno){
@@ -75,7 +73,6 @@ class Armadura{
 	var dueno
 	var refuerzoArmadura
 	var valorBase
-	var precioEnMonedas = 2 
 	var property tipoArtefacto
 	
 	constructor(nuevoDueno, nuevoValorBase, nuevoRefuerzoArmadura){

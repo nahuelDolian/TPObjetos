@@ -7,8 +7,8 @@ import fuerzaOscura.*
 describe "Punto 1: Hechicería recargada" {
 
 	const rolando = new Personaje()
-	const hechizoLogo = new Logo()	
-	const hechizoBasico = new HechizoBasico()
+	const hechizoLogo = new Logo(1,"espectro malefico")	
+	const hechizoBasico = new HechizoBasico(1)
 	
 	fixture{
 		rolando.hechizoPreferido(hechizoLogo)
@@ -21,7 +21,7 @@ test "Nivel de hechicería de Rolando, debe ser 56" {
 test "Al cambiar el nombre del espectro maléfico a espectro superrecontramalefico muajajaja, 
 	  su nivel de hechiceria debe ser 125" {
 			
-	hechizoLogo.cambiarNombre("espectro superrecontramalefico muajajaja")
+	hechizoLogo.nombre("espectro superrecontramalefico muajajaja")
 	assert.equals(125, rolando.nivelDeHechiceria())
 	}
 
@@ -49,7 +49,7 @@ test "Con el hechizo: espectro maléfico,debe dar verdadero"{
 test "Con el hechizo espectro maléfico con nombre 'pepe'.Debe dar falso,no es poderoso" {
 	
 	rolando.hechizoPreferido(hechizoLogo)
-	hechizoLogo.cambiarNombre("pepe")
+	hechizoLogo.nombre("pepe")
 	assert.notThat(rolando.esPoderoso())
 }
 
