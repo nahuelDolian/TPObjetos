@@ -52,7 +52,7 @@ class Personaje{
 	}
 		
 	method sacarEspejo(){
-		return artefactosDeLucha.filter({ artefacto => artefacto.tipoArtefacto() != "Espejo"})
+		return artefactosDeLucha.filter({ artefacto => artefacto.itemTipo() != "Espejo"})
 	}	
 		
 	method objetoMasPoderoso(){

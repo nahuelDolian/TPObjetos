@@ -15,6 +15,7 @@ describe "group of tests" {
 	const hechizoLogo = new Logo(1,"espectro malefico")
 	const otraArmadura = new Armadura(rolando, 5, cotaDeMalla)
 	const espejo = new Espejo()
+	const libroDeHechizo = new LibroDeHechizo()
 	
 
 fixture{
@@ -69,8 +70,8 @@ test"Reemplazar al hechizo preferido por un libro de
      nombre “espectro maléfico”) y al hechizo básico.
      el nivel de hechizeria de rolando debe dar 56"{
 	
-	libroDeHechizos.listaDeHechizos([hechizoLogo, hechizoBasico])
-	rolando.hechizoPreferido(libroDeHechizos)
+	libroDeHechizo.listaDeHechizos([hechizoLogo, hechizoBasico])
+	rolando.hechizoPreferido(libroDeHechizo)
 	assert.equals(56,rolando.nivelDeHechiceria())
 }
 test"Agregarle a Rolando una armadura extra, cuyo

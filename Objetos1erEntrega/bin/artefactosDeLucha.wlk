@@ -6,10 +6,10 @@ import fuerzaOscura.*
 class ArmaBlanca {
 	var dueno
 	var precioEnMonedas
-	var property tipoArtefacto
+	var property itemTipo
 	
 	constructor(nuevoTipoArtefacto){
-		tipoArtefacto = nuevoTipoArtefacto
+		itemTipo = nuevoTipoArtefacto
 		dueno = null
 		precioEnMonedas = 15
 	}
@@ -26,7 +26,7 @@ class ArmaBlanca {
 object collarDivino{
 	var perlas = 5
 	var dueno
-	var property tipoArtefacto = "CollarDivino"
+	var property itemTipo = "CollarDivino"
 	
 	method cantidadPerlas(unasPerlas){
 		perlas=unasPerlas
@@ -45,7 +45,7 @@ class Mascara {
 	var indiceDeOscuridad
 	var dueno
 	var minimoDePoder = 4
-	var property tipoArtefacto = "Mascara"
+	var property itemTipo = "Mascara"
 		
 	method dueno(unDueno){
 		dueno = unDueno
@@ -73,13 +73,13 @@ class Armadura{
 	var dueno
 	var refuerzoArmadura
 	var valorBase
-	var property tipoArtefacto
+	var property itemTipo
 	
 	constructor(nuevoDueno, nuevoValorBase, nuevoRefuerzoArmadura){
 		dueno = nuevoDueno
 		valorBase = nuevoValorBase
 		refuerzoArmadura = nuevoRefuerzoArmadura
-		tipoArtefacto = "Armadura"
+		itemTipo = "Armadura"
 	}
 		
 	method aportar(){
@@ -104,7 +104,7 @@ class Armadura{
 
 class Espejo{
 	var dueno
-	var property tipoArtefacto = "Espejo"
+	var property itemTipo = "Espejo"
 	
 	method dueno(unDueno){
 		dueno = unDueno
@@ -118,23 +118,18 @@ class Espejo{
 	}
 }
 
-object libroDeHechizos{
-	var listaDeHechizos = []
-	var multiplicador = 1
-	var property tipoArtefacto = "LibroDeHechizos"
+class LibroDeHechizo{
+	var property listaDeHechizos = []
+	var property multiplicador = 1
+	var property itemTipo = "LibroDeHechizos"
 	
-	
-	method multiplicado(nuevoMultiplicador){
-		multiplicador = nuevoMultiplicador
+	method agregarHechizo(nuevoHechizo){
+		if(nuevoHechizo.itemTipo() == "LibroDeHechizos"){
+			self.error("No se puede tener un libro dentro de otro libro")
+		}else{
+			listaDeHechizos.add(nuevoHechizo)
+		}
 	}
-	method multiplicador(){
-		return multiplicador
-	}
-	
-
-    method listaDeHechizos(unaListaDeHechizos){
-      listaDeHechizos = unaListaDeHechizos
-    }
     
     method aportar(){
    		return self.listaHechizosPoderosos().sum{unHechizo => unHechizo.aportar()}
