@@ -76,7 +76,7 @@ class Armadura{
 	var property itemTipo
 	
 	constructor(nuevoDueno, nuevoValorBase, nuevoRefuerzoArmadura){
-		dueno = nuevoDueno
+		dueno = null
 		valorBase = nuevoValorBase
 		refuerzoArmadura = nuevoRefuerzoArmadura
 		itemTipo = "Armadura"

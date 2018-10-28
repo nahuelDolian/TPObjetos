@@ -1,17 +1,15 @@
 import personaje.*
 
-object cotaDeMalla{
-	var dueno
-	var refuerzo = 1
+class CotaDeMalla{
+	var property dueno
+	var property refuerzo
 	
-	method refuerzo(nuevoValor){
-		refuerzo = nuevoValor
+	constructor(elegirValorRefuerzo){
+		refuerzo = elegirValorRefuerzo
+		dueno = null
 	}
 	method aportar(){
 		return refuerzo
-	}
-	method dueno(unDueno){
-		dueno=unDueno
 	}
 }
 object bendicion{

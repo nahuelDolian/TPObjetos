@@ -13,6 +13,7 @@ describe "group of tests" {
 	const unHechizo = new Hechizo(1,"espectro malefico")
 	const hechizoBasico = new HechizoBasico(1)
 	const hechizoLogo = new Logo(1,"espectro malefico")
+	const cotaDeMalla = new CotaDeMalla(1)
 	const otraArmadura = new Armadura(rolando, 5, cotaDeMalla)
 	const espejo = new Espejo()
 	const libroDeHechizo = new LibroDeHechizo()
