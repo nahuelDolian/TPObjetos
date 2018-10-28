@@ -6,8 +6,8 @@ class Hechizo {
 	var property multiplicador
 	var property itemTipo
 	
-	constructor(elegirMultiplicador, elegirNombre){
-		multiplicador = elegirMultiplicador
+	constructor(elegirNombre){
+		multiplicador = 1
 		nombre = elegirNombre
 		itemTipo = "Hechizo"
 	}	
@@ -22,15 +22,31 @@ class Hechizo {
 class EspectroMalefico inherits Hechizo {
 	}
 	
-class Logo inherits Hechizo{
+class Logo {
+	var property nombre
+	var property multiplicador
+	var property itemTipo
+	
+	
+	constructor(elegirMultiplicador, elegirNombre){
+		multiplicador = elegirMultiplicador
+		nombre = elegirNombre
+		itemTipo = "Hechizo"
 	}
+		method aportar(){
+		return nombre.length()
+	}
+	method esPoderoso(){
+		return self.aportar() > 15
+	}
+}
 
 class HechizoBasico {
 	var property multiplicador
 	var property itemTipo
 	
-	constructor(elegirMultiplicador){
-		multiplicador = elegirMultiplicador
+	constructor(){
+		multiplicador = 1
 		itemTipo = "HechizoBasico"
 	}
 	

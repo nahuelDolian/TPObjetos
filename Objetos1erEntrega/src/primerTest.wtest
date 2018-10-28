@@ -8,7 +8,7 @@ describe "Punto 1: Hechicería recargada" {
 
 	const rolando = new Personaje()
 	const hechizoLogo = new Logo(1,"espectro malefico")	
-	const hechizoBasico = new HechizoBasico(1)
+	const hechizoBasico = new HechizoBasico()
 	
 	fixture{
 		rolando.hechizoPreferido(hechizoLogo)

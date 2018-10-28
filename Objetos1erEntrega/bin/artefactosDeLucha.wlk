@@ -83,11 +83,7 @@ class Armadura{
 	}
 		
 	method aportar(){
-		return valorBase + self.refuerzoArmadura()
-	}
-		
-	method refuerzoArmadura(){
-		return refuerzoArmadura.aportar()
+		return valorBase + refuerzoArmadura.aportar()
 	}
 	
 	method refuerzoArmadura(unRefuerzo){
