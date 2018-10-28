@@ -17,6 +17,9 @@ class Hechizo {
 	method esPoderoso(){
 		return self.aportar() > 15
 	}
+	method precioDeLista(){
+		return self.aportar()
+	}
 }
 
 class EspectroMalefico inherits Hechizo {
@@ -39,6 +42,9 @@ class Logo {
 	method esPoderoso(){
 		return self.aportar() > 15
 	}
+	method precioDeLista(){
+		return self.aportar()
+	}
 }
 
 class HechizoBasico {
@@ -55,5 +61,8 @@ class HechizoBasico {
 	}
 	method esPoderoso(){
 		return false
+	}
+	method precioDeLista(){
+		return self.aportar()
 	}
 }

@@ -2,6 +2,7 @@ import hechizos.*
 import artefactosDeLucha.*
 import refuerzosArmadura.*
 import fuerzaOscura.*
+import feriaDeHechiceria.*
 
 class Personaje{
 	
@@ -9,6 +10,7 @@ class Personaje{
 	var artefactosDeLucha = []
 	var valorBaseDeLucha = 1
 	var property nivelBaseHechiceria = 3
+	var property monedasDeOro = 100
 	
 	//punto 1	
 	
@@ -59,37 +61,41 @@ class Personaje{
 		return (self.sacarEspejo()).max{unArtefacto => unArtefacto.aportar()}
 	}
 	
-	}
 	//punto 4
 	
-	
-/*method comprarArtefacto(artefacto){
-	if (self.monedasDeOro() >= artefacto.precioEnMonedas()){
-		
-	}else{
+	method cumplirObjetivo(){
+		monedasDeOro += 10
 	
 	}
-	}
-method comprarHechiso(hechiso){
-	if (self.canjear()){
-		
-	}else{
-		if(self.comprarConMonedas()){
-		
-	}
 	
-}
-}
-method canjear(){
-	return self.hechizoFavorito.precioEnMonedas() / 2 >= hechisoAComprar.precioEnMonedas()
+	method comprarArtefacto(artefacto){
+	if (self.monedasDeOro() >= artefacto.precioDeLista()){
+		self.agregarArtefacto(artefacto)
+		monedasDeOro -= artefacto.precioDeLista()
+		}else{
+			self.error("No alcansan las monedas de oro para comprar este artefacto")
+			 }
+	}
+	method comprarHechiso(nuevoHechiso){
+		if (self.canjear(nuevoHechiso)){
+		
+		}else{
+			if(self.comprarConMonedas(nuevoHechiso)){
+		
+		}
 	
+	}
 }
+	method canjear(nuevoHechiso){
+		return (self.hechizoPreferido()).precioDeLista() / 2 >= nuevoHechiso.precioDeLista()
+	
+	}
 
 
-method comprarConMonedas(){
-	return self.monedasDeOro() >= hechisoAComprar.precioEnMonedas()
-}
-
-
+	method comprarConMonedas(nuevoHechiso){
+		return self.monedasDeOro() >= nuevoHechiso.precioDeLista()
+	}
 }  
+	
+/*
 */

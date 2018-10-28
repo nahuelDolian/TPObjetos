@@ -4,7 +4,7 @@ import refuerzosArmadura.*
 import artefactosDeLucha.*
 import fuerzaOscura.*
 
-describe "group of tests" {
+describe "Lucha más avanzada aún" {
 
 	const rolando = new Personaje()
 	const espadaDelDestino = new ArmaBlanca("Espada")

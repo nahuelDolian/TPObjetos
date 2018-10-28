@@ -5,13 +5,11 @@ import fuerzaOscura.*
 
 class ArmaBlanca {
 	var dueno
-	var precioEnMonedas
 	var property itemTipo
 	
 	constructor(nuevoTipoArtefacto){
-		itemTipo = nuevoTipoArtefacto
 		dueno = null
-		precioEnMonedas = 15
+		itemTipo = nuevoTipoArtefacto
 	}
 	
 	method dueno(unDueno){
@@ -20,6 +18,9 @@ class ArmaBlanca {
 	
 	method aportar(){
 		return 3
+	}
+	method precioDeLista(){
+		return self.aportar() * 5
 	}
 }
 
@@ -36,6 +37,9 @@ object collarDivino{
 		return  perlas
 	}
 	
+	method precioDeLista(){
+		return perlas * 2
+	}	
 	method dueno(unDueno){
 		dueno = unDueno
 	}
@@ -66,6 +70,9 @@ class Mascara {
 	method calcularSuAporte(){
 		return (fuerzaOscura.valorFuerzaOscura()/2)*indiceDeOscuridad
 	}
+	method precioDeLista(){
+		return self.aportar()
+	}
 }
 
 
@@ -76,7 +83,7 @@ class Armadura{
 	var property itemTipo
 	
 	constructor(nuevoDueno, nuevoValorBase, nuevoRefuerzoArmadura){
-		dueno = null
+		dueno = nuevoDueno
 		valorBase = nuevoValorBase
 		refuerzoArmadura = nuevoRefuerzoArmadura
 		itemTipo = "Armadura"
@@ -96,6 +103,9 @@ class Armadura{
 	method cambiarRefuerzo(valor){
 		refuerzoArmadura.refuerzo(valor)
 	}
+	method precioDeLista(){
+		return refuerzoArmadura.precioEnMonedas()
+	}
 }
 
 class Espejo{
@@ -111,6 +121,9 @@ class Espejo{
 		}else{
 			return dueno.objetoMasPoderoso().aportar()
 		}
+	}
+	method precioDeLista(){
+		return 90
 	}
 }
 
@@ -134,6 +147,11 @@ class LibroDeHechizo{
 	method listaHechizosPoderosos(){
 		return listaDeHechizos.filter{unHechizo => unHechizo.esPoderoso()}
 	}
+	method precioDeLista(){
+		return (listaDeHechizos.size()*10) + 1 * (self.listaHechizosPoderosos()).sum({hechizo => hechizo.aportar()})
+	}
+	
+
 }
 
 	

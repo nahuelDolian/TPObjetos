@@ -1,0 +1,34 @@
+import personaje.*
+import hechizos.*
+import refuerzosArmadura.*
+import artefactosDeLucha.*
+import fuerzaOscura.*
+import feriaDeHechiceria.*
+
+
+describe "Comercio" {
+
+	const xenia = new Personaje()
+	const thor = new Personaje()
+	const hechizoLogo = new Logo(1,"alacachula cachicomula")
+	const hechizoBasico = new HechizoBasico()
+	const loki = new Personaje()
+
+	fixture{
+		xenia.hechizoPreferido(hechizoLogo)
+		thor.hechizoPreferido(hechizoBasico)
+		loki.hechizoPreferido(hechizoBasico)
+		loki.monedasDeOro(5)
+		
+	}
+
+	test "Conocer el precio de lista de un hechizo de logo
+cuyo nombre es “alacachula cachicomula"{
+	
+
+		assert.equals(22, hechizoLogo.precioDeLista())
+
+	}
+	
+	
+}
