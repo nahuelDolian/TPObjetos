@@ -32,6 +32,7 @@ object ninguno{
 	method aportar(dueno){
 	   return 0
 	}
+	
 
 	method precioDeLista(){
 		return 2
