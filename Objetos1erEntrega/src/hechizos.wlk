@@ -10,7 +10,7 @@ class Hechizo {
 		nombre = elegirNombre
 	}	
 	
-	method aportar(){
+	method aportar(dueno){
 		return nombre.length() * multiplicador
 	}
 	method esPoderoso(){
@@ -30,7 +30,7 @@ object HechizoBasico {
 		itemTipo = "HechizoBasico"
 	}
 	
-	method aportar(){
+	method aportar(dueno){
 		return 10
 	}
 	method esPoderoso(){
