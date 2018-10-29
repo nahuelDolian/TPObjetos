@@ -104,7 +104,7 @@ class Armadura{
 		refuerzoArmadura.refuerzo(valor)
 	}
 	method precioDeLista(){
-		return refuerzoArmadura.precioEnMonedas()
+		return refuerzoArmadura.precioDeLista()
 	}
 }
 
@@ -131,7 +131,11 @@ class LibroDeHechizo{
 	var property listaDeHechizos = []
 	var property multiplicador = 1
 	var property itemTipo = "LibroDeHechizos"
+	var dueno 
 	
+	method dueno(unDueno){
+		dueno = unDueno
+	}	
 	method agregarHechizo(nuevoHechizo){
 		if(nuevoHechizo.itemTipo() == "LibroDeHechizos"){
 			self.error("No se puede tener un libro dentro de otro libro")

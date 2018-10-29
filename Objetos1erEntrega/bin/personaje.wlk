@@ -2,7 +2,6 @@ import hechizos.*
 import artefactosDeLucha.*
 import refuerzosArmadura.*
 import fuerzaOscura.*
-import feriaDeHechiceria.*
 
 class Personaje{
 	
@@ -69,33 +68,60 @@ class Personaje{
 	}
 	
 	method comprarArtefacto(artefacto){
-	if (self.monedasDeOro() >= artefacto.precioDeLista()){
-		self.agregarArtefacto(artefacto)
-		monedasDeOro -= artefacto.precioDeLista()
-		}else{
-			self.error("No alcansan las monedas de oro para comprar este artefacto")
-			 }
+	if (self.monedasSuficientesParaComprar(artefacto)){
+			self.agregarArtefacto(artefacto)
+			monedasDeOro -= artefacto.precioDeLista()
+				}else{
+				self.error("No tienes monedas de oro suficientes para comprar este artefacto")
+				}
 	}
-	method comprarHechiso(nuevoHechiso){
-		if (self.canjear(nuevoHechiso)){
-		
+	
+	method monedasSuficientesParaComprar(artefacto){
+		return self.monedasDeOro() >= artefacto.precioDeLista()
+	}
+	
+	/*method comprarHechizo(nuevoHechizo){
+		if ( self.hechizoPreferido() != null && self.canjear(nuevoHechizo)){
+		self.hechizoPreferido(nuevoHechizo)
+				
 		}else{
-			if(self.comprarConMonedas(nuevoHechiso)){
-		
-		}
+			if(self.comprarConMonedas(nuevoHechizo)){
+				 self.hechizoPreferido(nuevoHechizo)
+				 monedasDeOro += ((self.hechizoPreferido()).precioDeLista() / 2) - (nuevoHechizo.precioDeLista())
+					}else{
+						self.error("No te alcansan las monedas para comprar el Hechizo")
+					}
 	
 	}
 }
-	method canjear(nuevoHechiso){
-		return (self.hechizoPreferido()).precioDeLista() / 2 >= nuevoHechiso.precioDeLista()
-	
-	}
-
-
-	method comprarConMonedas(nuevoHechiso){
-		return self.monedasDeOro() >= nuevoHechiso.precioDeLista()
-	}
-}  
-	
-/*
+* 
 */
+	method canjear(nuevoHechizo){
+		return ((self.hechizoPreferido()).precioDeLista() / 2 >= nuevoHechizo.precioDeLista())
+	}
+
+
+	method comprarConMonedas(nuevoHechizo){
+		return self.monedasDeOro() >= nuevoHechizo.precioDeLista()
+	} 
+
+method comprarHechizo(nuevoHechizo){
+	if(self.hechizoPreferido() == null){
+		self.hechizoPreferido(nuevoHechizo)
+		monedasDeOro -= nuevoHechizo.precioDeLista()
+		}else{
+			if(self.canjear(nuevoHechizo)){
+				self.hechizoPreferido(nuevoHechizo)
+					}else{
+				    if(self.monedasDeOro() >= nuevoHechizo.precioDeLista()){
+				    	self.hechizoPreferido(nuevoHechizo)
+				    	monedasDeOro -= nuevoHechizo.precioDeLista() - (self.hechizoPreferido().precioDeLista()/ 2 )
+				   		}else{
+				   			self.error("No puedes comprar este hechizo")
+				   			}
+						}
+						
+		}
+}
+
+}
