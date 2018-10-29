@@ -5,7 +5,7 @@ import fuerzaOscura.*
 
 class Personaje{
 	
-	var property hechizoPreferido = null
+	var property hechizoPreferido = hechizoBasico
 	var artefactosDeLucha = []
 	var valorBaseDeLucha = 1
 	var property nivelBaseHechiceria = 3
@@ -53,7 +53,7 @@ class Personaje{
 	}
 		
 	method sacarEspejo(){
-		return artefactosDeLucha.filter({ artefacto => artefacto.itemTipo() != "Espejo"})
+		return artefactosDeLucha.filter({ artefacto => artefacto == espejo })
 	}	
 		
 	method objetoMasPoderoso(){
@@ -96,32 +96,25 @@ class Personaje{
 }
 * 
 */
-	method canjear(nuevoHechizo){
-		return ((self.hechizoPreferido()).precioDeLista() / 2 >= nuevoHechizo.precioDeLista())
-	}
-
-
-	method comprarConMonedas(nuevoHechizo){
+	
+method comprarConMonedas(nuevoHechizo){
 		return self.monedasDeOro() >= nuevoHechizo.precioDeLista()
 	} 
 
-method comprarHechizo(nuevoHechizo){
-	if(self.hechizoPreferido() == null){
-		self.hechizoPreferido(nuevoHechizo)
-		monedasDeOro -= nuevoHechizo.precioDeLista()
-		}else{
-			if(self.canjear(nuevoHechizo)){
-				self.hechizoPreferido(nuevoHechizo)
-					}else{
-				    if(self.monedasDeOro() >= nuevoHechizo.precioDeLista()){
-				    	self.hechizoPreferido(nuevoHechizo)
-				    	monedasDeOro -= nuevoHechizo.precioDeLista() - (self.hechizoPreferido().precioDeLista()/ 2 )
-				   		}else{
-				   			self.error("No puedes comprar este hechizo")
-				   			}
-						}
-						
-		}
+method pagarHechizo(){
+	monedasDeOro -= nuevoHechizo.precioDeLista() - (self.hechizoPreferido().precioDeLista() / 2)
 }
 
+method comprarHechizo(nuevoHechizo){
+		if (puedeComprar()){
+			self.pagarHechizo()
+			self.hechizoPreferido(nuevoHechizo)
+			} else{
+			  self.error("No puedes comprar este hechizo")
+  			}
+  			
+			
+method puedeComprar(){
+	self.monedasDeOro() > (nuevoHechizo.precioDeLista() - (self.hechizoPreferido().precioDeLista() / 2))
+	}
 }
