@@ -4,15 +4,14 @@ import artefactosDeLucha.*
 class Hechizo {
 	var property nombre
 	var property multiplicador
-	var property itemTipo
 	
 	constructor(elegirNombre, tipoDeHechizo){
 		multiplicador = 1
 		nombre = elegirNombre
-		itemTipo = tipoDeHechizo
 	}	
+	
 	method aportar(){
-		return nombre.length()
+		return nombre.length() * multiplicador
 	}
 	method esPoderoso(){
 		return self.aportar() > 15
