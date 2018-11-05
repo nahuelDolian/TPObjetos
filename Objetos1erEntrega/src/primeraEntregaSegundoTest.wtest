@@ -1,0 +1,59 @@
+import personaje.*
+import hechizos.*
+import refuerzosArmadura.*
+import artefactosDeLucha.*
+import fuerzaOscura.*
+
+
+describe "Lucha" {
+	const rolando = new Personaje()
+	const espadaDelDestino = new ArmaBlanca()
+	const mascaraOscura = new Mascara(4,1)
+	
+	
+	fixture{
+		rolando.agregarArtefacto(espadaDelDestino)
+		rolando.agregarArtefacto(mascaraOscura)
+		rolando.agregarArtefacto(collarDivino)
+	}
+	test"Eliminar todos los artefactos de Rolando.
+		 la habilidad de lucha de rolando debe dar 1."{
+		 	
+		rolando.quitarArtefacto(espadaDelDestino)
+		rolando.quitarArtefacto(collarDivino)
+		rolando.quitarArtefacto(mascaraOscura)
+		assert.equals(1,rolando.damePoderLucha())
+	}
+	test"La habilidad de lucha de Rolando debe dar 13."{
+		
+		assert.equals(13,rolando.damePoderLucha())
+	}
+	
+	test"Cambiar la cantidad de perlas del collar divino a 3.
+		 La habilidad de lucha de rolando debe dar 11."{
+		
+		collarDivino.cantidadPerlas(3)
+		assert.equals(11,rolando.damePoderLucha())
+	}
+	test"Cambiar el valor base para la lucha de Rolando a 8.
+		 La habilidad de lucha de rolando debe dar 20."{
+		
+		rolando.valorBaseDeLucha(8)
+		assert.equals(20,rolando.damePoderLucha())
+	}
+	test"Hacer que ocurra un eclipse.
+	 	 El valor de lucha de la mascaraOscura debe dar 5."{
+		
+		fuerzaOscura.eclipse()
+		assert.equals(5,mascaraOscura.aportar(rolando))
+	}
+	test"Eliminar la máscara oscura de los artefactos de
+		 Rolando.
+  		 El valor de lucha de rolando debe dar 9"{
+  		 	
+		rolando.quitarArtefacto(mascaraOscura)
+		assert.equals(9,rolando.damePoderLucha())
+	}
+	
+
+}

@@ -9,60 +9,32 @@ class Hechizo {
 	constructor(elegirNombre){
 		multiplicador = 1
 		nombre = elegirNombre
-		itemTipo = "Hechizo"
+		itemTipo ="Hechizo"
 	}	
-	method aportar(){
-		return nombre.length()
+	
+	method aportar(dueno){
+		return nombre.length() * multiplicador
 	}
-	method esPoderoso(){
-		return self.aportar() > 15
+	method esPoderoso(dueno){
+		return self.aportar(dueno) > 15
 	}
-	method precioDeLista(){
-		return self.aportar()
+	method precioDeLista(dueno){
+		return self.aportar(dueno)
 	}
 }
 
-class EspectroMalefico inherits Hechizo {
-	}
-	
-class Logo {
-	var property nombre
-	var property multiplicador
-	var property itemTipo
+object hechizoBasico {
+	var property multiplicador = 1
+	var property itemTipo = "hechizoBasico"
 	
 	
-	constructor(elegirMultiplicador, elegirNombre){
-		multiplicador = elegirMultiplicador
-		nombre = elegirNombre
-		itemTipo = "Hechizo"
-	}
-		method aportar(){
-		return nombre.length()
-	}
-	method esPoderoso(){
-		return self.aportar() > 15
-	}
-	method precioDeLista(){
-		return self.aportar()
-	}
-}
-
-class HechizoBasico {
-	var property multiplicador
-	var property itemTipo
-	
-	constructor(){
-		multiplicador = 1
-		itemTipo = "HechizoBasico"
-	}
-	
-	method aportar(){
+	method aportar(dueno){
 		return 10
 	}
-	method esPoderoso(){
+	method esPoderoso(dueno){
 		return false
 	}
-	method precioDeLista(){
-		return self.aportar()
+	method precioDeLista(dueno){
+		return self.aportar(dueno)
 	}
 }

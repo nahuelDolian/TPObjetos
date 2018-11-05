@@ -10,7 +10,7 @@ class CotaDeMalla{
 	method aportar(dueno){
 		return refuerzo
 	}
-	method precioDeLista(){
+	method precioDeLista(dueno){
 		return (refuerzo / 2)
 	}
 }
@@ -21,8 +21,8 @@ object bendicion{
 		return dueno.nivelDeHechiceria()
 	}
 	
-	method precioDeLista(){
-		return dueno.armadura.valorBase()
+	method precioDeLista(dueno){
+		return dueno.armadura().valorBase()
 	}
 }
 
@@ -34,7 +34,7 @@ object ninguno{
 	}
 	
 
-	method precioDeLista(){
+	method precioDeLista(dueno){
 		return 2
 	}
 }

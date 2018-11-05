@@ -1,0 +1,60 @@
+import personaje.*
+import hechizos.*
+import refuerzosArmadura.*
+import artefactosDeLucha.*
+import fuerzaOscura.*
+
+describe "Punto 1: Hechicería recargada" {
+
+	const rolando = new Personaje()
+	const hechizoLogo = new Hechizo("espectro malefico")
+	
+	fixture{
+		rolando.hechizoPreferido(hechizoLogo)
+	}
+		
+test "Nivel de hechicería de Rolando, debe ser 56" {
+		
+		assert.equals(56,rolando.nivelDeHechiceria())
+	}
+test "Al cambiar el nombre del espectro maléfico a espectro superrecontramalefico muajajaja, 
+	  su nivel de hechiceria debe ser 125" {
+			
+	hechizoLogo.nombre("espectro superrecontramalefico muajajaja")
+	assert.equals(125, rolando.nivelDeHechiceria())
+	}
+
+test "Al cambiar el hechizo preferido para que sea el hechizo básico,
+	  su nivel de hechiceria debe ser 35 " {
+ 	
+ 	rolando.hechizoPreferido(hechizoBasico)
+ 	assert.equals(35,rolando.nivelDeHechiceria())
+	}
+test "Hacer que ocurra un eclipse, su nivel de hechiceria debe ser 61 " {
+	
+	fuerzaOscura.eclipse()
+	assert.equals(61,rolando.nivelDeHechiceria())
+	
+	}
+
+// "Saber si un hechizo es poderoso " 
+
+test "Con el hechizo: espectro maléfico,debe dar verdadero"{
+	
+	rolando.hechizoPreferido(hechizoLogo)
+	assert.that(rolando.esPoderoso())
+	}
+
+test "Con el hechizo espectro maléfico con nombre 'pepe'.Debe dar falso,no es poderoso" {
+	
+	rolando.hechizoPreferido(hechizoLogo)
+	hechizoLogo.nombre("pepe")
+	assert.notThat(rolando.esPoderoso())
+}
+
+test "Con el hechizo básico, debe dar falso,no es podesoro" {
+	
+	rolando.hechizoPreferido(hechizoBasico)
+	assert.notThat(rolando.esPoderoso())
+}
+}

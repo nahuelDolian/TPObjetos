@@ -4,24 +4,20 @@ import refuerzosArmadura.*
 import fuerzaOscura.*
 
 class ArmaBlanca {
-	var property itemTipo
 	
-	constructor(nuevoTipoArtefacto){
-		itemTipo = nuevoTipoArtefacto
-	}
+	constructor(){}
 	
 	method aportar(dueno){
 		return 3
 	}
 	
-	method precioDeLista(){
-		return self.aportar() * 5
+	method precioDeLista(dueno){
+		return self.aportar(dueno) * 5
 	}
 }
 
 object collarDivino{
 	var perlas = 5
-	var property itemTipo = "CollarDivino"
 	
 	method cantidadPerlas(unasPerlas){
 		perlas=unasPerlas
@@ -31,15 +27,14 @@ object collarDivino{
 		return  perlas
 	}
 	
-	method precioDeLista(){
+	method precioDeLista(dueno){
 		return perlas * 2
 	}	
 }
 
 class Mascara {
-	var indiceDeOscuridad
-	var minimoDePoder = 4
-	var property itemTipo = "Mascara"
+	var property indiceDeOscuridad
+	var property minimoDePoder 
 		
 	constructor (valorPoder, indiceOscuro){
 		minimoDePoder = valorPoder
@@ -53,48 +48,46 @@ class Mascara {
 	method calcularSuAporte(){
 		return (fuerzaOscura.valorFuerzaOscura()/2)*indiceDeOscuridad
 	}
-	method precioDeLista(){
-		return self.aportar()
+	method precioDeLista(dueno){
+		return self.aportar(dueno)
 	}
 }
 
 
 class Armadura{
-	var refuerzoArmadura
+	var property refuerzoArmadura
 	var valorBase
-	var property itemTipo
-	
-	constructor(nuevoDueno, nuevoValorBase, nuevoRefuerzoArmadura){
+
+	constructor(nuevoValorBase, nuevoRefuerzoArmadura){
 		valorBase = nuevoValorBase
 		refuerzoArmadura = nuevoRefuerzoArmadura
-		itemTipo = "Armadura"
 	}
 	method valorBase(){
 		return valorBase
 	}
 		
 	method aportar(dueno){
-		return valorBase + refuerzoArmadura.aportar()
+		return valorBase + refuerzoArmadura.aportar(dueno)
 	}
 	 
 	method cambiarRefuerzo(valor){
 		refuerzoArmadura.refuerzo(valor)
 	}
-	method precioDeLista(){
-		return refuerzoArmadura.precioDeLista()
+	method precioDeLista(dueno){
+		return refuerzoArmadura.precioDeLista(dueno)
 	}
 }
 
-object Espejo{
+object espejo{
 	
 	method aportar(dueno){
 		if((dueno.sacarEspejo()).isEmpty()){
 			return 0
 		}else{
-			return dueno.objetoMasPoderoso().aportar()
+			return dueno.objetoMasPoderoso().aportar(dueno)
 		}
 	}
-	method precioDeLista(){
+	method precioDeLista(dueno){
 		return 90
 	}
 }
@@ -102,6 +95,7 @@ object Espejo{
 class LibroDeHechizo{
 	var property listaDeHechizos = []
 	var property multiplicador = 1
+	var property itemTipo = "LibroDeHechizos"
 	
 	method agregarHechizo(nuevoHechizo){
 		if(nuevoHechizo.itemTipo() == "LibroDeHechizos"){
@@ -112,14 +106,14 @@ class LibroDeHechizo{
 	}
     
     method aportar(dueno){
-   		return self.listaHechizosPoderosos().sum{unHechizo => unHechizo.aportar()}
+   		return self.listaHechizosPoderosos(dueno).sum{unHechizo => unHechizo.aportar(dueno)}
    		
 	}
-	method listaHechizosPoderosos(){
-		return listaDeHechizos.filter{unHechizo => unHechizo.esPoderoso()}
+	method listaHechizosPoderosos(dueno){
+		return listaDeHechizos.filter{unHechizo => unHechizo.esPoderoso(dueno)}
 	}
-	method precioDeLista(){
-		return (listaDeHechizos.size()*10) + 1 * (self.listaHechizosPoderosos()).sum({hechizo => hechizo.aportar()})
+	method precioDeLista(dueno){
+		return (listaDeHechizos.size()*10) + 1 * (self.listaHechizosPoderosos(dueno)).sum({hechizo => hechizo.aportar(dueno)})
 	}
 }
 

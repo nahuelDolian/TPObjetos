@@ -2,10 +2,11 @@ import hechizos.*
 import artefactosDeLucha.*
 import refuerzosArmadura.*
 import fuerzaOscura.*
+import tienda.*
 
 class Personaje{
 	
-	var property hechizoPreferido = null
+	var property hechizoPreferido = hechizoBasico
 	var artefactosDeLucha = []
 	var valorBaseDeLucha = 1
 	var property nivelBaseHechiceria = 3
@@ -14,14 +15,14 @@ class Personaje{
 	//punto 1	
 	
 	method nivelDeHechiceria(){
-		return (self.nivelBaseHechiceria() * (self.poderHechizoPreferido() * hechizoPreferido.multiplicador())) + fuerzaOscura.valorFuerzaOscura()
+		return (self.nivelBaseHechiceria() * (self.poderHechizoPreferido())) + fuerzaOscura.valorFuerzaOscura()
 	}
 
 	method poderHechizoPreferido(){
-		return hechizoPreferido.aportar()
+		return hechizoPreferido.aportar(self)
 	}
 	method esPoderoso(){
-		return hechizoPreferido.esPoderoso()
+		return hechizoPreferido.esPoderoso(self)
 	}
 	method valorBaseDeLucha(nuevoValor){
 		valorBaseDeLucha = nuevoValor
@@ -31,12 +32,12 @@ class Personaje{
 	
 	
 	method damePoderLucha(){
-		return valorBaseDeLucha + artefactosDeLucha.sum{artefacto => artefacto.aportar()}
+		return valorBaseDeLucha + artefactosDeLucha.sum{artefacto => artefacto.aportar(self)}
 	}
 	
 	method agregarArtefacto(unArtefacto){
 		artefactosDeLucha.add(unArtefacto)
-		unArtefacto.dueno(self)
+	
 	}
 	
 	method quitarArtefacto(unArtefacto){
@@ -53,75 +54,40 @@ class Personaje{
 	}
 		
 	method sacarEspejo(){
-		return artefactosDeLucha.filter({ artefacto => artefacto.itemTipo() != "Espejo"})
+		return artefactosDeLucha.filter({ artefacto => artefacto != espejo})
 	}	
 		
 	method objetoMasPoderoso(){
-		return (self.sacarEspejo()).max{unArtefacto => unArtefacto.aportar()}
+		return (self.sacarEspejo()).max{unArtefacto => unArtefacto.aportar(self)}
 	}
 	
 	//punto 4
 	
 	method cumplirObjetivo(){
 		monedasDeOro += 10
-	
 	}
 	
-	method comprarArtefacto(artefacto){
-	if (self.monedasSuficientesParaComprar(artefacto)){
-			self.agregarArtefacto(artefacto)
-			monedasDeOro -= artefacto.precioDeLista()
-				}else{
-				self.error("No tienes monedas de oro suficientes para comprar este artefacto")
-				}
+	
+	method intentoDeCompra(unArtefacto){
+		tienda.comprarArtefacto(unArtefacto, self)
+	}
+	method cantidadSuficienteParaArtefacto(unArtefacto){
+		return self.monedasDeOro() >= unArtefacto.precioDeLista(self)
+	}
+	method descontarCantidad(cantidad){
+		monedasDeOro -= cantidad
+	}
+	method pasarPropiedadDe(unArtefacto){
+		self.agregarArtefacto(unArtefacto)
 	}
 	
-	method monedasSuficientesParaComprar(artefacto){
-		return self.monedasDeOro() >= artefacto.precioDeLista()
+	method intentoDeCompraHechizo(unHechizo){
+		tienda.comprarHechizo(unHechizo, self)
 	}
 	
-	/*method comprarHechizo(nuevoHechizo){
-		if ( self.hechizoPreferido() != null && self.canjear(nuevoHechizo)){
-		self.hechizoPreferido(nuevoHechizo)
-				
-		}else{
-			if(self.comprarConMonedas(nuevoHechizo)){
-				 self.hechizoPreferido(nuevoHechizo)
-				 monedasDeOro += ((self.hechizoPreferido()).precioDeLista() / 2) - (nuevoHechizo.precioDeLista())
-					}else{
-						self.error("No te alcansan las monedas para comprar el Hechizo")
-					}
+	method hechizoPreferidoEsMasCaro(unHechizo){
+		return self.hechizoPreferido().precioDeLista(self) / 2 >= unHechizo.precioDeLista(self)
+	}
+	
 	
 	}
-}
-* 
-*/
-	method canjear(nuevoHechizo){
-		return ((self.hechizoPreferido()).precioDeLista() / 2 >= nuevoHechizo.precioDeLista())
-	}
-
-
-	method comprarConMonedas(nuevoHechizo){
-		return self.monedasDeOro() >= nuevoHechizo.precioDeLista()
-	} 
-
-method comprarHechizo(nuevoHechizo){
-	if(self.hechizoPreferido() == null){
-		self.hechizoPreferido(nuevoHechizo)
-		monedasDeOro -= nuevoHechizo.precioDeLista()
-		}else{
-			if(self.canjear(nuevoHechizo)){
-				self.hechizoPreferido(nuevoHechizo)
-					}else{
-				    if(self.monedasDeOro() >= nuevoHechizo.precioDeLista()){
-				    	self.hechizoPreferido(nuevoHechizo)
-				    	monedasDeOro -= nuevoHechizo.precioDeLista() - (self.hechizoPreferido().precioDeLista()/ 2 )
-				   		}else{
-				   			self.error("No puedes comprar este hechizo")
-				   			}
-						}
-						
-		}
-}
-
-}

@@ -1,0 +1,85 @@
+import personaje.*
+import hechizos.*
+import refuerzosArmadura.*
+import artefactosDeLucha.*
+import fuerzaOscura.*
+
+describe "Lucha más avanzada aún" {
+
+	const rolando = new Personaje()
+	const espadaDelDestino = new ArmaBlanca()
+	const mascaraOscura = new Mascara(4,0)
+	const armadura = new Armadura( 2, ninguno)
+	const unHechizo = new Hechizo("espectro malefico")
+	const hechizoLogo = new Hechizo("espectro malefico")
+	const cotaDeMalla = new CotaDeMalla(1)
+	const otraArmadura = new Armadura(5, cotaDeMalla)
+	const libroDeHechizo = new LibroDeHechizo()
+	
+
+fixture{
+	rolando.agregarArtefacto(espadaDelDestino)
+	rolando.agregarArtefacto(mascaraOscura)
+	rolando.agregarArtefacto(collarDivino)
+	rolando.agregarArtefacto(armadura)
+	rolando.agregarArtefacto(espejo)
+	mascaraOscura.indiceDeOscuridad(0)
+}
+
+test"Con 5 artefactos rolando tiene que estar cargado"{
+	assert.equals(true,rolando.estaCargado())
+}
+test"Sacando la armadura y quedando con 4 artefactos rolando no tiene que estar cargado"{
+	rolando.quitarArtefacto(armadura)
+	assert.equals(false,rolando.estaCargado())
+}
+test"rolando debe tener 20 de habilidad de lucha"{
+	assert.equals(20,rolando.damePoderLucha())
+}
+test"La armadura de rolando con una bendicion de refuerzo debe dar 58 de habilidad de lucha"{
+	
+	rolando.hechizoPreferido(unHechizo)
+	armadura.refuerzoArmadura(bendicion)
+	assert.equals(58,armadura.aportar(rolando))
+}
+test"La armadura de rolando con una cota malla de refuerzo debe dar 3 de habilidad de lucha"{
+	armadura.refuerzoArmadura(cotaDeMalla)
+    assert.equals(3,armadura.aportar(rolando))
+	
+}
+test"La armadura de rolando con un hechizo básico de refuerzo debe dar 12 de habilidad de lucha"{
+	rolando.hechizoPreferido(hechizoBasico)
+	armadura.refuerzoArmadura(hechizoBasico)
+	assert.equals(12,armadura.aportar(rolando))
+}
+test"La armadura de rolando con un espectro melefico de refuerzo debe dar 12 de habilidad de lucha"{
+	rolando.hechizoPreferido(unHechizo)
+	armadura.refuerzoArmadura(unHechizo)
+	assert.equals(19,armadura.aportar(rolando))
+}
+test"Quitanto todos los artefactos de rolando y dejando solo el espejo, la habilidad de lucha debe dar 1"{
+	rolando.quitarArtefacto(armadura)
+	rolando.quitarArtefacto(espadaDelDestino)
+	rolando.quitarArtefacto(collarDivino)
+	rolando.quitarArtefacto(mascaraOscura)
+	assert.equals(1,rolando.damePoderLucha())
+}
+test"Reemplazar al hechizo preferido por un libro de
+     hechizos que contenga el Hechizo de Logos (con
+     nombre “espectro maléfico”) y al hechizo básico.
+     el nivel de hechizeria de rolando debe dar 56"{
+	
+	libroDeHechizo.listaDeHechizos([hechizoLogo, hechizoBasico])
+	rolando.hechizoPreferido(libroDeHechizo)
+	assert.equals(56,rolando.nivelDeHechiceria())
+}
+test"Agregarle a Rolando una armadura extra, cuyo
+     valor base es 5, con un refuerzo cota de malla que
+     tiene un valor de lucha 6.
+     El valor de lucha de rolando debe dar 37"{
+	otraArmadura.cambiarRefuerzo(6)
+	rolando.agregarArtefacto(otraArmadura)
+	assert.equals(37,rolando.damePoderLucha())
+}
+
+}
