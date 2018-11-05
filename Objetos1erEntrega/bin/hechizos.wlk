@@ -23,6 +23,29 @@ class Hechizo {
 	}
 }
 
+class HechizoComercial {
+	
+	var property nombre
+	var property multiplicador
+	var property itemTipo
+	
+	constructor(elegirNombre){
+		multiplicador = 2
+		nombre = elegirNombre
+		itemTipo ="HechizoComercial"
+	}	
+	
+	 method aportar(dueno){
+		return (nombre.length() * 0.20) * multiplicador
+	}
+	method esPoderoso(dueno){
+		return self.aportar(dueno) > 15
+	}
+	method precioDeLista(dueno){
+		return self.aportar(dueno)
+	}
+} 
+
 object hechizoBasico {
 	var property multiplicador = 1
 	var property itemTipo = "hechizoBasico"
